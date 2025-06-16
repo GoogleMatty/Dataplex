@@ -1,0 +1,2028 @@
+{
+	"info": {
+		"_postman_id": "570f6bfe-b3b0-4774-9e38-a94c20023667",
+		"name": "Dataplex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Aspects",
+			"item": [
+				{
+					"name": "Books",
+					"item": [
+						{
+							"name": "entryGroups - List",
+							"id": "ad2088f5-9d16-4ee6-a4c8-6a135a4d93bc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/sydney-forum/locations/australia-southeast1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/sydney-forum/datasets/CymbalBeans/tables/visualAnalysis_vw"
+							},
+							"response": []
+						},
+						{
+							"name": "Books (EntryType)",
+							"id": "a2215ae9-8fba-4165-b040-6e7e731b4236",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryTypes/books"
+							},
+							"response": []
+						},
+						{
+							"name": "Books (EntryType)",
+							"id": "672fde73-e03f-417c-b62a-38be97be895f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryTypes/books"
+							},
+							"response": []
+						},
+						{
+							"name": "Books (EntryType)",
+							"id": "2f2a1a7d-79c0-4df6-adae-99f8973554c5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n    \"description\": \"My library of books\",\n    \"displayName\": \"Books\",\n    \"etag\": \"xnnSc9nfiMSYp2JO-0oj53o9-KB8z36Xrmmk2OmUNAM\",\n    \"platform\": \"Dataplex\",\n    \"system\": \"Library\",\n    \"requiredAspects\": [\n      {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\"\n        },\n         {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\"\n        },\n        {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\"\n        }\n    ],\n    \"authorization\": {}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryTypes?entry_type_id=books",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryTypes"
+									],
+									"query": [
+										{
+											"key": "entry_type_id",
+											"value": "books"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "book-overview",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d2e3e49f-f66a-4d31-81a2-f1156564a5bf",
+										"exec": [
+											"var template = `",
+											"<style type=\"text/css\">",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+											"    .tftable tr {background-color:#ffffff;}",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+											"    .tftable tr:hover {background-color:#e0ffff;}",
+											"</style>",
+											"",
+											"<table class=\"tftable\" border=\"1\">",
+											"    <tr>",
+											"        <th>Name</th>",
+											"        <th>UID</th>",
+											"        <th>Create Time</th>",
+											"        <th>Update Time</th>",
+											"        <th>Display Name</th>",
+											"        <th>Etag</th>",
+											"        <th>Metadata Template Name</th>",
+											"        <th>Metadata Template Type</th>",
+											"    </tr>",
+											"    ",
+											"    {{#each response.aspectTypes}}",
+											"        <tr>",
+											"            <td>{{name}}</td>",
+											"            <td>{{uid}}</td>",
+											"            <td>{{createTime}}</td>",
+											"            <td>{{updateTime}}</td>",
+											"            <td>{{displayName}}</td>",
+											"            <td>{{etag}}</td>",
+											"            <td>{{metadataTemplate.name}}</td>",
+											"            <td>{{metadataTemplate.type}}</td>",
+											"        </tr>",
+											"    {{/each}}",
+											"</table>",
+											"`;",
+											"",
+											"function constructVisualizerPayload() {",
+											"    return {response: pm.response.json()}",
+											"}",
+											"",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6c89ee80-f9f6-402c-bea3-46d5f43d09b9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-overview"
+							},
+							"response": []
+						},
+						{
+							"name": "book-overview",
+							"id": "c8b3e9d7-eded-458a-a6f9-55a6e9fe6314",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-overview"
+							},
+							"response": []
+						},
+						{
+							"name": "book-overview (aspect type)",
+							"id": "24d394cb-7b6d-434c-ad71-38de2b010b3c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n    \"description\": \"Book overview details\",\n    \"displayName\": \"Book Overview\",\n    \"aspectTemplate\": {},\n    \"authorization\": {},\n    \"metadataTemplate\": {\n        \"name\": \"UserSchema\",\n        \"type\": \"record\",\n        \"recordFields\": [\n            {\n                \"index\": 1,\n                \"name\": \"author\",\n                \"type\": \"string\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Author\",\n                    \"description\": \"Author of the book.\",\n                    \"displayOrder\": 1\n                }\n            },\n            {\n                \"index\": 2,\n                \"name\": \"classification\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Fiction\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Nonfiction\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Classification\",\n                    \"description\": \"Book Classification fiction or non-fiction\",\n                    \"displayOrder\": 2\n                }\n            },\n            {\n                \"index\": 3,\n                \"name\": \"genre\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Fantasy\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Mystery\"\n                    },\n                    {\n                        \"index\": 3,\n                        \"name\": \"Romance\"\n                    },\n                    {\n                        \"index\": 4,\n                        \"name\": \"Thriller\"\n                    },\n                    {\n                        \"index\": 5,\n                        \"name\": \"Biography\"\n                    },\n                    {\n                        \"index\": 6,\n                        \"name\": \"Self-Help\"\n                    },\n                    {\n                        \"index\": 7,\n                        \"name\": \"True-Crime\"\n                    },\n                    {\n                        \"index\": 8,\n                        \"name\": \"Cooking\"\n                    },\n                    {\n                        \"index\": 9,\n                        \"name\": \"Travel\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Genre\",\n                    \"description\": \"Genre of the book\",\n                    \"displayOrder\": 3\n                }\n            },\n            {\n                \"index\": 4,\n                \"name\": \"publication-year\",\n                \"type\": \"int\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Publication Year\",\n                    \"description\": \"Year of original publication\",\n                    \"displayOrder\": 4\n                }\n            },\n            {\n                \"index\": 5,\n                \"name\": \"isbn\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"ISBN\",\n                    \"description\": \"ISBN\",\n                    \"displayOrder\": 5\n                }\n            },\n            {\n                \"index\": 6,\n                \"name\": \"cover-image\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Cover Image\",\n                    \"description\": \"Cover Image of Book\",\n                    \"displayOrder\": 6,\n                    \"stringType\": \"url\"\n                }\n            },\n            {\n                \"index\": 7,\n                \"name\": \"summary\",\n                \"type\": \"string\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Summary\",\n                    \"description\": \"Short description of the book\",\n                    \"displayOrder\": 7,\n                    \"stringType\": \"richText\"\n                }\n            }\n        ]\n    }\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes?aspect_type_id=book-overview",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"aspectTypes"
+									],
+									"query": [
+										{
+											"key": "aspect_type_id",
+											"value": "book-overview"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "book-revisions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d2e3e49f-f66a-4d31-81a2-f1156564a5bf",
+										"exec": [
+											"var template = `",
+											"<style type=\"text/css\">",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+											"    .tftable tr {background-color:#ffffff;}",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+											"    .tftable tr:hover {background-color:#e0ffff;}",
+											"</style>",
+											"",
+											"<table class=\"tftable\" border=\"1\">",
+											"    <tr>",
+											"        <th>Name</th>",
+											"        <th>UID</th>",
+											"        <th>Create Time</th>",
+											"        <th>Update Time</th>",
+											"        <th>Display Name</th>",
+											"        <th>Etag</th>",
+											"        <th>Metadata Template Name</th>",
+											"        <th>Metadata Template Type</th>",
+											"    </tr>",
+											"    ",
+											"    {{#each response.aspectTypes}}",
+											"        <tr>",
+											"            <td>{{name}}</td>",
+											"            <td>{{uid}}</td>",
+											"            <td>{{createTime}}</td>",
+											"            <td>{{updateTime}}</td>",
+											"            <td>{{displayName}}</td>",
+											"            <td>{{etag}}</td>",
+											"            <td>{{metadataTemplate.name}}</td>",
+											"            <td>{{metadataTemplate.type}}</td>",
+											"        </tr>",
+											"    {{/each}}",
+											"</table>",
+											"`;",
+											"",
+											"function constructVisualizerPayload() {",
+											"    return {response: pm.response.json()}",
+											"}",
+											"",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "45f62a4f-f8d4-451a-9000-bdf2040304e7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-revisions"
+							},
+							"response": []
+						},
+						{
+							"name": "book-revisions",
+							"id": "5cf85c53-948e-43c3-ae41-927deff22c7a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-revisions"
+							},
+							"response": []
+						},
+						{
+							"name": "book-revisions(aspect type)",
+							"id": "e030a7d9-6439-46c6-bc0e-19e8c49d221b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n    \"displayName\": \"Book Revisions\",\n    \"aspectTemplate\": {},\n    \"authorization\": {},\n    \"metadataTemplate\": {\n        \"name\": \"UserSchema\",\n        \"type\": \"record\",\n        \"recordFields\": [\n            {\n                \"index\": 1,\n                \"name\": \"revision-history\",\n                \"type\": \"array\",\n                \"arrayItems\": {\n                    \"index\": 1,\n                    \"name\": \"history-details\",\n                    \"type\": \"record\",\n                    \"recordFields\": [\n                        {\n                            \"index\": 1,\n                            \"name\": \"revision-number\",\n                            \"type\": \"int\",\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Revision Number\",\n                                \"displayOrder\": 1\n                            }\n                        },\n                        {\n                            \"index\": 2,\n                            \"name\": \"revision-date\",\n                            \"type\": \"datetime\",\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Revision Date\",\n                                \"displayOrder\": 2\n                            }\n                        },\n                        {\n                            \"index\": 3,\n                            \"name\": \"description\",\n                            \"type\": \"string\",\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Description\",\n                                \"displayOrder\": 3\n                            }\n                        }\n                    ],\n                    \"typeId\": \"history\",\n                    \"constraints\": {\n                        \"required\": true\n                    },\n                    \"annotations\": {\n                        \"displayName\": \"History Details\",\n                        \"displayOrder\": 1\n                    }\n                },\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Revision History\",\n                    \"description\": \"Revision History Details\",\n                    \"displayOrder\": 1\n                }\n            }\n        ]\n    }\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes?aspect_type_id=book-revisions",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"aspectTypes"
+									],
+									"query": [
+										{
+											"key": "aspect_type_id",
+											"value": "book-revisions"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "book-tags",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d2e3e49f-f66a-4d31-81a2-f1156564a5bf",
+										"exec": [
+											"var template = `",
+											"<style type=\"text/css\">",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+											"    .tftable tr {background-color:#ffffff;}",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+											"    .tftable tr:hover {background-color:#e0ffff;}",
+											"</style>",
+											"",
+											"<table class=\"tftable\" border=\"1\">",
+											"    <tr>",
+											"        <th>Name</th>",
+											"        <th>UID</th>",
+											"        <th>Create Time</th>",
+											"        <th>Update Time</th>",
+											"        <th>Display Name</th>",
+											"        <th>Etag</th>",
+											"        <th>Metadata Template Name</th>",
+											"        <th>Metadata Template Type</th>",
+											"    </tr>",
+											"    ",
+											"    {{#each response.aspectTypes}}",
+											"        <tr>",
+											"            <td>{{name}}</td>",
+											"            <td>{{uid}}</td>",
+											"            <td>{{createTime}}</td>",
+											"            <td>{{updateTime}}</td>",
+											"            <td>{{displayName}}</td>",
+											"            <td>{{etag}}</td>",
+											"            <td>{{metadataTemplate.name}}</td>",
+											"            <td>{{metadataTemplate.type}}</td>",
+											"        </tr>",
+											"    {{/each}}",
+											"</table>",
+											"`;",
+											"",
+											"function constructVisualizerPayload() {",
+											"    return {response: pm.response.json()}",
+											"}",
+											"",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "38a6657d-6fb4-4ce5-b894-5d92c3a35035",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-tags"
+							},
+							"response": []
+						},
+						{
+							"name": "book-tags",
+							"id": "c78edf89-e740-426a-af57-9d7563ab5b30",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-tags"
+							},
+							"response": []
+						},
+						{
+							"name": "book-tags",
+							"id": "2b86b133-3e8e-4260-86a6-2d6de21eb766",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n    \"description\": \"Tags associated with Books\",\n    \"displayName\": \"Book Tags\",\n    \"etag\": \"OYMDe_0li0RCsOdn2KktiirY81r8nZin7vXlZ0W2LvE\",\n    \"aspectTemplate\": {},\n    \"authorization\": {},\n    \"metadataTemplate\": {\n        \"name\": \"UserSchema\",\n        \"type\": \"record\",\n        \"recordFields\": [\n            {\n                \"index\": 1,\n                \"name\": \"tags\",\n                \"type\": \"array\",\n                \"arrayItems\": {\n                    \"index\": 1,\n                    \"name\": \"tag\",\n                    \"type\": \"string\",\n                    \"constraints\": {\n                        \"required\": true\n                    },\n                    \"annotations\": {\n                        \"displayName\": \"Tag\",\n                        \"description\": \"Tag Name\",\n                        \"displayOrder\": 1\n                    }\n                },\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Tags\",\n                    \"description\": \"Tag List\",\n                    \"displayOrder\": 1\n                }\n            }\n        ]\n    }\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes?aspect_type_id=book-tags",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"aspectTypes"
+									],
+									"query": [
+										{
+											"key": "aspect_type_id",
+											"value": "book-tags"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pride and Prejudice",
+							"id": "3d79a427-ed97-4c09-8662-b89168daa471",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/PridePrejudice"
+							},
+							"response": []
+						},
+						{
+							"name": "Pride and Prejudice (Entry)",
+							"id": "b0de5962-a837-4e42-97c7-6cb123aa7458",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"entry_source\": \n    {\n          \"display_name\": \"Pride and Prejudice\",\n          \"description\": \"Follows the turbulent relationship between Elizabeth Bennet, the daughter of a country gentleman, and Fitzwilliam Darcy, a rich aristocratic landowner\",\n          \"system\": \"Library\",\n          \"platform\": \"Dataplex Catalog\"\n    },\n  \"entry_type\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n  \"aspects\": {\n    \"dataplex-types.global.overview\": {\n        \"data\": { \"content\": \"In Jane Austen's Pride and Prejudice, the lives of the Bennet sisters, particularly Elizabeth, revolve around the pursuit of advantageous marriages in 19th-century England.  When the wealthy and arrogant Mr. Darcy arrives in their neighborhood, Elizabeth clashes with him, forming a negative first impression fueled by pride and prejudice.  However, through a series of social encounters and misunderstandings, Elizabeth and Darcy are forced to confront their own biases and misconceptions.  As their initial disdain gradually transforms into respect and affection, they must overcome societal expectations, family pressures, and their own flaws to find love and happiness.\" }\n     },\n       \"dataplex-metadata.global.book-overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n       \"data\": {\n                \"author\":           \"Jane Austen\",\n                \"classification\":   \"Fiction\",\n                \"genre\":            \"Romance\",\n                \"publication-year\": \"1875\",\n                \"isbn\":             \"9780140434262\",\n                \"cover-image\":      \"\",\n                \"summary\":          \"\"\n                }\n            },\n     \"dataplex-metadata.global.book-revisions\": {\n       \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n       \"data\": {\n                 \"revision-history\": [  { \"revision-number\":      \"1\" ,\n                                          \"revision-date\":        \"1835-10-02T15:01:23.045123456Z\",\n                                          \"description\":      \"First Edition\" },\n                                          { \"revision-number\":      \"1\" ,\n                                          \"revision-date\":        \"1840-10-02T15:01:23.045123456Z\",\n                                          \"description\":      \"Second Edition minor corrections.\" }\n                                         \n                 ]\n                }\n     },\n     \"dataplex-metadata.global.book-tags\": {\n       \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n       \"data\": {\n                 \"tags\": [ \"Austen\",\"Classic\",\"Romance\"  ]\n                  }    \n         }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/?entry_id=PridePrejudice",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryGroups",
+										"library",
+										"entries",
+										""
+									],
+									"query": [
+										{
+											"key": "entry_id",
+											"value": "PridePrejudice"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Jane Eyre",
+							"id": "26a5e84b-ed69-41dc-8e58-c5ee65e237d5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{\n  \"entry_source\": {\n    \"display_name\": \"Jane Eyre\",\n    \"description\": \"A young woman, Jane Eyre, becomes a governess at Thornfield Hall and falls in love with her employer, Mr. Rochester.\",\n    \"system\": \"Library\",\n    \"platform\": \"Dataplex Catalog\"\n  },\n  \"entry_type\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n  \"aspects\": {\n    \"dataplex-types.global.overview\": {\n      \"data\": {\n        \"content\": \"Jane Eyre, Charlotte Brontë's iconic novel, tells the story of a spirited and independent young woman's journey from hardship to self-discovery. Orphaned at a young age and subjected to neglect and cruelty, Jane finds strength and resilience in her unwavering spirit. As a governess at Thornfield Hall, she falls deeply in love with her enigmatic employer, Mr. Rochester. However, their passionate connection is threatened by secrets and hidden truths that test the limits of their love. The novel explores themes of social inequality, morality, and the complexities of human relationships.\",\n        \"contentType\": \"HTML\"\n      }\n    },\n    \"dataplex-metadata.global.book-overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n      \"data\": {\n        \"author\": \"Charlotte Bronte\",\n        \"classification\": \"Fiction\",\n        \"genre\": \"Romance\",\n        \"publication-year\": 1847,\n        \"isbn\": \"978-0141439518\",\n        \"cover-image\": \"\",\n        \"summary\": \"A young woman's journey from hardship to self-discovery and love.\"\n      }\n    },\n    \"dataplex-metadata.global.book-revisions\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n      \"data\": {\n        \"revision-history\": [\n          {\n            \"revision-number\": 1,\n            \"revision-date\": \"1847-10-16T00:00:00Z\",\n            \"description\": \"First Edition\"\n          }\n        ]\n      }\n    },\n    \"dataplex-metadata.global.book-tags\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n      \"data\": {\n        \"tags\": [\"Bronte\", \"Classic\", \"Romance\", \"Gothic\"]\n      }\n    }\n  }\n}\n"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/?entry_id=JaneEyre",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryGroups",
+										"library",
+										"entries",
+										""
+									],
+									"query": [
+										{
+											"key": "entry_id",
+											"value": "JaneEyre"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Wuthering Heights",
+							"id": "06985de3-68ed-4d5b-ac04-c9d2c3d8ba46",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"entry_source\": {\n    \"display_name\": \"Wuthering Heights\",\n    \"description\": \"A story of love, revenge, and the destructive power of passion, set on the Yorkshire moors.\",\n    \"system\": \"Library\",\n    \"platform\": \"Dataplex Catalog\"\n  },\n  \"entry_type\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n  \"aspects\": {\n    \"dataplex-types.global.overview\": {\n      \"data\": {\n        \"content\": \"Emily Brontë's Wuthering Heights is a gothic novel of intense passion and enduring consequences. Set against the dramatic backdrop of the Yorkshire moors, the story follows the tumultuous relationship between Catherine Earnshaw and Heathcliff, a foundling brought to the Earnshaw family. Their passionate love is intertwined with revenge, betrayal, and the destructive cycle of hatred that spans generations. The novel delves into themes of class, love, and the wild, untamed spirit of the moors, creating a captivating and unforgettable tale.\",\n        \"contentType\": \"HTML\"\n      }\n    },\n    \"dataplex-metadata.global.book-overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n      \"data\": {\n        \"author\": \"Emily Bronte\",\n        \"classification\": \"Fiction\",\n        \"genre\": \"Romance\",\n        \"publication-year\": 1847,\n        \"isbn\": \"978-0141439518\",\n        \"cover-image\": \"\",\n        \"summary\": \"A tale of love, revenge, and the destructive power of passion.\"\n      }\n    },\n    \"dataplex-metadata.global.book-revisions\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n      \"data\": {\n        \"revision-history\": [\n          {\n            \"revision-number\": 1,\n            \"revision-date\": \"1847-12-10T00:00:00Z\",\n            \"description\": \"First Edition\"\n          }\n        ]\n      }\n    },\n    \"dataplex-metadata.global.book-tags\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n      \"data\": {\n        \"tags\": [\"Bronte\", \"Classic\", \"Gothic\", \"Romance\"]\n      }\n    }\n  }\n}\n"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/?entry_id=WutheringHeights",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryGroups",
+										"library",
+										"entries",
+										""
+									],
+									"query": [
+										{
+											"key": "entry_id",
+											"value": "WutheringHeights"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agnes Grey",
+							"id": "376d3212-377f-438b-9ed2-9fc3473fb541",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"entry_source\": {\n    \"display_name\": \"Agnes Grey\",\n    \"description\": \"A semi-autobiographical novel about a governess's experiences.\",\n    \"system\": \"Library\",\n    \"platform\": \"Dataplex Catalog\"\n  },\n  \"entry_type\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n  \"aspects\": {\n    \"dataplex-types.global.overview\": {\n      \"data\": {\n        \"content\": \"Agnes Grey offers a realistic and often bleak portrayal of a governess's life in 19th-century England.  It explores themes of social class and the challenges faced by women.\"\n      }\n    },\n    \"dataplex-metadata.global.book-overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n      \"data\": {\n        \"author\": \"Anne Bronte\",\n        \"classification\": \"Fiction\",\n        \"genre\": \"Romance\",\n        \"publication-year\": 1847,\n        \"isbn\": \"9780141441633\", \n        \"cover-image\": \"\",\n        \"summary\": \"A semi-autobiographical novel about a governess's experiences.\"\n      }\n    },\n    \"dataplex-metadata.global.book-revisions\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n      \"data\": {\n        \"revision-history\": [\n          {\n            \"revision-number\": 1,\n            \"revision-date\": \"1847-12-01T00:00:00Z\",\n            \"description\": \"First Edition\"\n          }\n        ]\n      }\n    },\n    \"dataplex-metadata.global.book-tags\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n      \"data\": {\n        \"tags\": [\"Bronte\", \"Classic\", \"Realistic Fiction\"]\n      }\n    }\n  },\n  \"uid\": \"unique-uuid-agnes-grey\"\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/?entry_id=AgnesGrey",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryGroups",
+										"library",
+										"entries",
+										""
+									],
+									"query": [
+										{
+											"key": "entry_id",
+											"value": "AgnesGrey"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TenantofWildfell",
+							"id": "269d31a3-4cbb-44ef-a32b-13ad3a981d47",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"entry_source\": {\n    \"display_name\": \"The Tenant of Wildfell Hall\",\n    \"description\": \"A mysterious and independent woman, Helen Graham, seeks refuge in Wildfell Hall, leaving behind a troubled past.  The novel explores themes of female independence, social constraints, and domestic abuse.\",\n    \"system\": \"Library\",\n    \"platform\": \"Dataplex Catalog\"\n  },\n  \"entry_type\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n  \"aspects\": {\n    \"dataplex-types.global.overview\": {\n      \"data\": {\n        \"content\": \"Anne Bronte's The Tenant of Wildfell Hall is a powerful and unconventional novel for its time.  It tackles the sensitive themes of domestic abuse and a woman's struggle for independence.  Helen Graham's mysterious past and her courageous actions challenge social norms and offer a compelling narrative.\"\n      }\n    },\n    \"dataplex-metadata.global.book-overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n      \"data\": {\n        \"author\": \"Anne Bronte\",\n        \"classification\": \"Fiction\",\n        \"genre\": \"Romance\",\n        \"publication-year\": 1848,\n        \"isbn\": \"9780141439549\",\n        \"cover-image\": \"\",\n        \"summary\": \"A story of female independence and overcoming adversity.\"\n      }\n    },\n    \"dataplex-metadata.global.book-revisions\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n      \"data\": {\n        \"revision-history\": [\n          {\n            \"revision-number\": 1,\n            \"revision-date\": \"1848-06-15T00:00:00Z\",\n            \"description\": \"First Edition\"\n          }\n        ]\n      }\n    },\n    \"dataplex-metadata.global.book-tags\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n      \"data\": {\n        \"tags\": [\"Bronte\", \"Classic\", \"Fiction\"]\n      }\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/?entry_id=TenantWildfellHill",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryGroups",
+										"library",
+										"entries",
+										""
+									],
+									"query": [
+										{
+											"key": "entry_id",
+											"value": "TenantWildfellHill"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PridePrejudice",
+							"id": "1185895e-641e-4b98-addf-2e939706ccaa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/JaneEyre"
+							},
+							"response": []
+						}
+					],
+					"id": "b84346e6-a773-4749-b25a-8e124941ee05"
+				}
+			],
+			"id": "6011e91a-b722-4822-b58f-1e2aa4aa722b"
+		},
+		{
+			"name": "Entries",
+			"item": [
+				{
+					"name": "Entries - Custom",
+					"id": "2fd8a276-3e98-4fc1-9e53-46605d60dc2c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/sydney-forum/locations/australia-southeast1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/sydney-forum/datasets/CymbalBeans/tables/visualAnalysis_vw"
+					},
+					"response": []
+				},
+				{
+					"name": "Entry Lookup",
+					"id": "a6fe3ae8-d56d-40fc-9a36-1abb98acd632",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/sydney-forum/locations/australia-southeast1:lookupEntry?entry=projects/sydney-forum/locations/australia-southeast1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/sydney-forum/datasets/CymbalBeans/tables/visualAnalysis_vw",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"sydney-forum",
+								"locations",
+								"australia-southeast1:lookupEntry"
+							],
+							"query": [
+								{
+									"key": "entry",
+									"value": "projects/sydney-forum/locations/australia-southeast1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/sydney-forum/datasets/CymbalBeans/tables/visualAnalysis_vw"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entries - System",
+					"id": "cdd3139a-2907-46f9-9797-12d9b723da10",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/dataplex-metadata/datasets/02_master_data/tables/customer_master"
+					},
+					"response": []
+				}
+			],
+			"id": "30f37621-a89a-4040-8256-950b3e1e630d"
+		},
+		{
+			"name": "Sandpit",
+			"item": [
+				{
+					"name": "ProjectList",
+					"id": "313637e5-01bb-476d-ad32-b217ba837a10",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://cloudresourcemanager.googleapis.com/v3/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "entryTypes_Luke",
+					"id": "00c6f0ac-f557-45e3-ad6b-9b95022717af",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/entryTypes/data-product"
+					},
+					"response": []
+				},
+				{
+					"name": "Entries_Luke Copy",
+					"id": "74827e4d-6556-42de-a28d-bd5220c88f3d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/entryGroups"
+					},
+					"response": []
+				},
+				{
+					"name": "Aspects Copy",
+					"id": "35fb06fa-cd2c-47ac-bce2-9be2d5f8c215",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/myDataProduct:retrieveAspects/?page_size=10",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								"myDataProduct:retrieveAspects",
+								""
+							],
+							"query": [
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Entry DP Framework",
+					"id": "77eae067-2dcf-438d-9869-fe6719026104",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/Instruments_Master"
+					},
+					"response": []
+				},
+				{
+					"name": "Aspects",
+					"id": "9c6a866a-572d-4353-8b0b-654d8e362b18",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/myDataProduct:retrieveAspects/?page_size=10",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								"myDataProduct:retrieveAspects",
+								""
+							],
+							"query": [
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9b0625c-ab42-4b72-8704-e207d6ede36a",
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>Entry</th>",
+									"        <th>Display Name</th>",
+									"        <th>Entry Type</th>",
+									"        <th>Modify Time</th>",
+									"        <th>Fully Qualified Name</th>",
+									"        <th>Linked Resource</th>",
+									"        <th>Dataplex Entry Name</th>",
+									"        <th>Dataplex Entry Display Name</th>",
+									"        <th>Dataplex Entry Type</th>",
+									"        <th>Parent Entry</th>",
+									"        <th>Dataplex Entry Fully Qualified Name</th>",
+									"        <th>Dataplex Entry Source Resource</th>",
+									"        <th>Dataplex Entry Source System</th>",
+									"        <th>Dataplex Entry Source Parent</th>",
+									"        <th>Dataplex Entry Source Display Name</th>",
+									"        <th>Dataplex Entry Source Create Time</th>",
+									"        <th>Dataplex Entry Source Update Time</th>",
+									"        <th>Dataplex Entry Type Aliases</th>",
+									"        <th>Project ID</th>",
+									"        <th>Total Size</th>",
+									"        <th>Next Page Token</th>",
+									"    </tr>",
+									"    ",
+									"    {{#each response.results}}",
+									"        <tr>",
+									"            <td>{{entry}}</td>",
+									"            <td>{{displayName}}</td>",
+									"            <td>{{entryType}}</td>",
+									"            <td>{{modifyTime}}</td>",
+									"            <td>{{fullyQualifiedName}}</td>",
+									"            <td>{{linkedResource}}</td>",
+									"            <td>{{dataplexEntry.name}}</td>",
+									"            <td>{{dataplexEntry.displayName}}</td>",
+									"            <td>{{dataplexEntry.entryType}}</td>",
+									"            <td>{{dataplexEntry.parentEntry}}</td>",
+									"            <td>{{dataplexEntry.fullyQualifiedName}}</td>",
+									"            <td>{{dataplexEntry.source.resource}}</td>",
+									"            <td>{{dataplexEntry.source.system}}</td>",
+									"            <td>{{dataplexEntry.source.parent}}</td>",
+									"            <td>{{dataplexEntry.source.displayName}}</td>",
+									"            <td>{{dataplexEntry.source.createTime}}</td>",
+									"            <td>{{dataplexEntry.source.updateTime}}</td>",
+									"            <td>{{entryTypeAliases}}</td>",
+									"            <td>{{projectId}}</td>",
+									"            <td>{{totalSize}}</td>",
+									"            <td>{{nextPageToken}}</td>",
+									"        </tr>",
+									"    {{/each}}",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return { response: pm.response.json() }",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "fe0320ee-aa06-4103-97b3-801e0bb48996",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n          \"query\": \"projectid:dataplex-metadata name:myData*\"\n   }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global:searchEntries"
+					},
+					"response": []
+				},
+				{
+					"name": "AspectTypes Copy",
+					"id": "34331fbb-df6f-483b-aa7d-49dc3e279834",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/aspectTypes?aspect_type_id=mttest2",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "mttest2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entry (Data Product)",
+					"id": "a68f8216-452b-48b0-9c36-2c01dc090e69",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"My Fourth Data Product\",\n  \"description\": \"This is the description of my data product and contains all the details about what it does\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product\",\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.array-test\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/array-test\",\n       \"data\": {\n                \"hospitals\": [\n                    \"Entry 1\",\n                    \"Entry 2\",\n                    \"Entry 3\"\n                ]\n            },\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=myDataProduct",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "myDataProduct"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entry (Data Product v1)",
+					"id": "de6ed45c-575f-43cf-ad9a-3c5ee6f8a9f9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"My Fourth Data Product\",\n  \"description\": \"This is the description of my data product and contains all the details about what it does\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product-v1\",\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.inbound-ports\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/inbound-ports\",\n       \"data\": {\n                 \"inbound-port-array\": [\n                    {\n                        \"port-name\": \"port-01\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n                    },\n                       {\n                        \"port-name\": \"port-02\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n                    }\n                ]\n            },\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=myDataProduct",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "myDataProduct"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entry (Data Product v2)",
+					"id": "2254bbe4-862a-42bc-aa7a-e33e8a6194dd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"My Data Product v2\",\n  \"description\": \"This is the description of my data product and contains all the details about what it does\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product-v2\",\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.inbound-ports\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/inbound-ports\",\n       \"data\": {\n                 \"inbound-port-array\": [\n                    {\n                        \"port-name\": \"port-01\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n                    },\n                       {\n                        \"port-name\": \"port-02\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n                    }\n                ]\n               }\n     } ,\n    \"dataplex-metadata.us-central1.infrastructure\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/infrastructure\",\n        \"data\": {\n                \"Infrastructure\": [\n                    {\n                        \"component-name\": \"DP001-INF-01\",\n                        \"infrastructure-type\": \"Bigquery\",\n                        \"infra-uri\": \"https://github.com/GoogleCloudPlatform/cortex-dag-generator/blob/667d682031ae0dcd4dcc328a6219025c17b1fe37/cloudbuild.cdc.yaml\"\n                    }\n                ]\n            }\n      }\n    }\n}\n"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=myDataProductv2",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "myDataProductv2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entry (Data Product v3)",
+					"id": "e6ece49c-5fbf-4ad3-ab9e-c6ef6e492f43",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"My Data Product v3\",\n  \"description\": \"This is the description of my data product and contains all the details about what it does\",\n  \"fully_qualified_name\": \"bigquery:dataplex-metadata.masterdata.customer_master\",\n  \"overview\": \"This is my overview for the data product\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product-v3\",\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.inbound-ports\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/inbound-ports\",\n       \"data\": {\n                 \"inbound-port-array\": [\n                    {\n                        \"port-name\": \"port-01\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n                    },\n                       {\n                        \"port-name\": \"port-02\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n                    }\n                ]\n               }\n     } ,\n    \"dataplex-metadata.us-central1.infrastructure\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/infrastructure\",\n        \"data\": {\n                \"Infrastructure\": [\n                    {\n                        \"component-name\": \"DP001-INF-01\",\n                        \"infrastructure-type\": \"Bigquery\",\n                        \"infra-uri\": \"https://github.com/GoogleCloudPlatform/cortex-dag-generator/blob/667d682031ae0dcd4dcc328a6219025c17b1fe37/cloudbuild.cdc.yaml\"\n                    }\n                ]\n            }\n      },\n    \"dataplex-metadata.us-central1.data-governance\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/data-governance\",\n         \"data\": {\n                \"domain\": \"Sales\",\n                \"product-manager\": \"mattyt@google.com\",\n                \"data-contract\": {\n                    \"contract-owner\": \"mattyt@google.com\",\n                    \"terms\": \"<p>This is my data contract with schema ddetails for this version and link to data quality.</p>\"\n                }\n            }\n     },\n    \"dataplex-metadata.us-central1.data-product-code\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/data-product-code\",\n         \"data\": {   \n           \"code-details\": {\n                    \"module-name\": \"DP001\",\n                    \"module-description\": \"<p><strong>DP001</strong></p>\\n<p>Transform customer raw to customer master. Lookup customer credit risk score as part of the process.</p>\",\n                    \"module-url\": \"https://github.com/GoogleCloudPlatform/cortex-data-foundation\"\n                } \n         }\n            },\n    \"dataplex-metadata.us-central1.outbound-port\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/outbound-port\",\n         \"data\": {   \n                \"port-name\": \"OP-001\",\n                \"port-description\": \"<p>The final transformed customer master table</p>\",\n                \"port-uri\": \"//bigquery.googleapis.com/projects/dataplex-metadata/datasets/image_objects/tables/images_bucket\"\n         }\n    \n    }\n  }\n}\n"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=myDataProductFinal3",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "myDataProductFinal3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Data Products",
+					"id": "b8e010cf-bdc4-4e94-bbb4-3fd1838bc3aa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fully_qualified_name\": \"bigquery:data-products-workshop.02_transformed.instruments_vw\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product-v3\",\n  \"entry_source\": { \"description\":\"Matt's ASX test\",\n                    \"display_name\":\"ASX Metadata\",\n                    \"system\":\"Dataplex\",\n                    \"platform\":\"Data Product\"\n},\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.inbound-ports\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/inbound-ports\",\n       \"data\": {\n                 \"inbound-port-array\": [\n                    {\n                        \"port-name\": \"port-01\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/data-products-workshop/datasets/01_raw_source/tables/traded_equity_instruments\"\n                    }\n                ]\n               }\n     } ,\n    \"dataplex-metadata.us-central1.infrastructure\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/infrastructure\",\n        \"data\": {\n                \"Infrastructure\": [\n                    {\n                        \"component-name\": \"INF:MD:Instruments\",\n                        \"infrastructure-type\": \"Bigquery\",\n                        \"infra-uri\": \"https://gitlab.com/dev581422/datamesh/-/blob/main/domains/master-data/data-products/DP01:Instruments-Master/code/INF:MD:Instruments.sql\"\n                    }\n                ]\n            }\n      },\n    \"dataplex-metadata.us-central1.data-governance\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/data-governance\",\n         \"data\": {\n                \"domain\": \"Product Reference\",\n                \"product-manager\": \"mattyt@google.com\",\n                \"data-contract\": {\n                    \"contract-owner\": \"mattyt@google.com\",\n                    \"terms\": \"This is a batch refresh job with the following details...</p>\"\n                }\n            }\n     },\n    \"dataplex-metadata.us-central1.data-product-code\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/data-product-code\",\n         \"data\": {   \n           \"code-details\": {\n                    \"module-name\": \"DP001\",\n                    \"module-description\": \"<p><strong>DP001</strong></p>\\n<p>Transform raw instrument data into a master dataset.</p>\",\n                    \"module-url\": \"https://github.com/GoogleCloudPlatform/Instruments\"\n                } \n         }\n            },\n    \"dataplex-metadata.us-central1.outbound-port\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/outbound-port\",\n         \"data\": {   \n                \"port-name\": \"OP-001\",\n                \"port-description\": \"<p>The final transformed Instruments master view</p>\",\n                \"port-uri\": \"//bigquery.googleapis.com/projects/data-products-workshop/datasets/02_transformed/tables/instruments_vw\"\n         }\n    \n    },\n    \"dataplex-types.global.overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/overview\",\n      \"data\": { \n        \"content\": \"some_content this is my <strong>text</strong>\",\n        \"links\": [\n          {\"url\"  : \"url1\",\n           \"title\": \"title1\"},\n          {\"url\"  : \"url2\", \n           \"title\": \"title2\" }\n         ]\n      }\n    },\n    \"dataplex-types.global.contacts\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/contacts\",\n      \"data\": {\n        \"identities\": [\n          {\"role\":\"Product Manager\",\"name\":\"MattyT\"},\n          {\"role\":\"Domain Lead\",\"name\":\"D Owner\"}\n        ]\n      }\n  }\n }\n}\n"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=asxprod",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "asxprod"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Data Products 2",
+					"id": "0ff629fa-b522-4126-a09a-3a5aa185dc40",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fully_qualified_name\": \"bigquery:dataplex-metadata.masterdata.customer_master\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product-v3\",\n  \"entry_source\": { \"description\":\"Prices Streaming Data\",\n                    \"display_name\":\"Prices Stream\",\n                    \"system\":\"Dataplex\",\n                    \"platform\":\"Data Product\"\n},\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.inbound-ports\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/inbound-ports\",\n       \"data\": {\n                 \"inbound-port-array\": [\n                    {\n                        \"port-name\": \"port-01\",\n                        \"port-type\": \"Kafka\",\n                        \"port-uri\": \"//bigquery.googleapis.com/projects/asx-trade/prices\"\n                    }\n                ]\n               }\n     } ,\n    \"dataplex-metadata.us-central1.infrastructure\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/infrastructure\",\n        \"data\": {\n                \"Infrastructure\": [\n                    {\n                        \"component-name\": \"INF:Stream:Prices\",\n                        \"infrastructure-type\": \"PubSub\",\n                        \"infra-uri\": \"https://gitlab.com/dev581422/datamesh/-/blob/main/domains/master-data/data-products/DP02:Prices/code/INF:Stream:Prices.YAML\"\n                    }\n                ]\n            }\n      },\n    \"dataplex-metadata.us-central1.data-governance\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/data-governance\",\n         \"data\": {\n                \"domain\": \"Market\",\n                \"product-manager\": \"market@somewhere.com\",\n                \"data-contract\": {\n                    \"contract-owner\": \"marketcontract@somewhere.com\",\n                    \"terms\": \"This is a real time stream which operates from ....</p>\"\n                }\n            }\n     },\n    \"dataplex-metadata.us-central1.data-product-code\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/data-product-code\",\n         \"data\": {   \n           \"code-details\": {\n                    \"module-name\": \"DP001\",\n                    \"module-description\": \"<p><strong>DP001</strong></p>\\n<p>Take stream prices data from ASX and push to pubsub topic.</p>\",\n                    \"module-url\": \"https://github.com/GoogleCloudPlatform/prices\"\n                } \n         }\n            },\n    \"dataplex-metadata.us-central1.outbound-port\": {\n        \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/outbound-port\",\n         \"data\": {   \n                \"port-name\": \"OP-001\",\n                \"port-description\": \"<p>The final outbound pubsub topic </p>\",\n                \"port-uri\": \"/bigquery.googleapis.com/projects/data-products-workshop/topics/prices\"\n         }\n    \n    },\n    \"dataplex-types.global.overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/overview\",\n      \"data\": { \n        \"content\": \"some_content this is my <strong>text</strong>\",\n        \"links\": [\n          {\"url\"  : \"url1\",\n           \"title\": \"title1\"},\n          {\"url\"  : \"url2\", \n           \"title\": \"title2\" }\n         ]\n      }\n    },\n    \"dataplex-types.global.contacts\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/contacts\",\n      \"data\": {\n        \"identities\": [\n          {\"role\":\"Product Manager\",\"name\":\"Market PM\"},\n          {\"role\":\"Domain Lead\",\"name\":\"Market Owner\"}\n        ]\n      }\n  }\n }\n}\n"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=Prices",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "Prices"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entry (Data Product -OLD_)",
+					"id": "3e1ad85c-e7c2-48f2-89db-89298ae023ad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"My Second Data Product\",\n  \"entry_type\": \"projects/dataplex-metadata/locations/us-central1/entryTypes/data-product-v1\",\n  \"aspects\": {\n    \"dataplex-metadata.us-central1.inbound-ports\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/us-central1/aspectTypes/inbound-ports\",\n      \"data\": {\n        \"basic_contents\": \"test_content\"\n      }\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/entryGroups/data-product-group/entries/?entry_id=DataProductv1",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product-group",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "DataProductv1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aspect Types_Data Product Overview_Luke",
+					"id": "b50859f5-d5a6-4373-82d8-cad948f49806",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Data Product Overview\",\n  \"metadataTemplate\": {\n      \"name\": \"UserSchema\",\n      \"type\": \"record\",\n      \"recordFields\": [\n          {\n              \"index\": 1,\n              \"name\": \"data-product-definition\",\n              \"type\": \"record\",\n              \"recordFields\": [\n                  {\n                      \"index\": 1,\n                      \"name\": \"data-product-owner\",\n                      \"type\": \"string\",\n                      \"constraints\": {\n                          \"required\": true\n                      },\n                      \"annotations\": {\n                          \"displayName\": \"Data Product Owner\",\n                          \"description\": \"Data Product Owner/Manager\",\n                          \"displayOrder\": 1\n                      }\n                  },\n                  {\n                      \"index\": 2,\n                      \"name\": \"data-product-id\",\n                      \"type\": \"string\",\n                      \"constraints\": {\n                          \"required\": true\n                      },\n                      \"annotations\": {\n                          \"displayName\": \"Data Product ID\",\n                          \"description\": \"Unique Identifier for Data Product ie. FIN001\",\n                          \"displayOrder\": 2\n                      }\n                  },\n                  {\n                      \"index\": 3,\n                      \"name\": \"data-product-description\",\n                      \"type\": \"string\",\n                      \"constraints\": {\n                          \"required\": true\n                      },\n                      \"annotations\": {\n                          \"displayName\": \"Data Product Description\",\n                          \"description\": \"Description of Data Product\",\n                          \"displayOrder\": 3,\n                          \"stringType\": \"richText\"\n                      }\n                  },\n                  {\n                      \"index\": 4,\n                      \"name\": \"data-product-type\",\n                      \"type\": \"enum\",\n                      \"enumValues\": [\n                          {\n                              \"index\": 1,\n                              \"name\": \"Batch\"\n                          },\n                          {\n                              \"index\": 2,\n                              \"name\": \"Streaming\"\n                          },\n                          {\n                              \"index\": 3,\n                              \"name\": \"AIML\"\n                          },\n                          {\n                              \"index\": 4,\n                              \"name\": \"Analytics\"\n                          },\n                          {\n                              \"index\": 5,\n                              \"name\": \"DataGovernance\"\n                          }\n                      ],\n                      \"constraints\": {\n                          \"required\": true\n                      },\n                      \"annotations\": {\n                          \"displayName\": \"Data Product Type\",\n                          \"description\": \"Type of Data Product\",\n                          \"displayOrder\": 4\n                      }\n                  },\n                  {\n                      \"index\": 5,\n                      \"name\": \"data-product-documentation\",\n                      \"type\": \"string\",\n                      \"constraints\": {},\n                      \"annotations\": {\n                          \"displayName\": \"Data Product Documentation\",\n                          \"description\": \"Data Product Documentation (PRD, Design, etc..)\",\n                          \"displayOrder\": 5,\n                          \"stringType\": \"url\"\n                      }\n                  },\n                  {\n                      \"index\": 6,\n                      \"name\": \"tags\",\n                      \"type\": \"array\",\n                      \"arrayItems\": {\n                          \"index\": 1,\n                          \"name\": \"tag-details\",\n                          \"type\": \"string\",\n                          \"constraints\": {},\n                          \"annotations\": {\n                              \"displayName\": \"Tag Details\",\n                              \"description\": \"Tags used to search\",\n                              \"displayOrder\": 1\n                          }\n                      },\n                      \"constraints\": {},\n                      \"annotations\": {\n                          \"displayName\": \"Tags\",\n                          \"description\": \"Associated Tags\",\n                          \"displayOrder\": 6\n                      }\n                  },\n                    {\n                      \"index\": 7,\n                      \"name\": \"data-product-type-template\",\n                      \"type\": \"string\",\n                      \"constraints\": {},\n                      \"annotations\": {\n                          \"displayName\": \"Data Product Type Template\",\n                          \"description\": \"The URL of the template used to implement this data product\",\n                          \"displayOrder\": 7,\n                          \"stringType\": \"url\"\n                      }\n                  }\n              ],\n              \"constraints\": {\n                  \"required\": true\n              },\n              \"annotations\": {\n                  \"displayName\": \"Data Product Definition\",\n                  \"displayOrder\": 1\n              }\n          }\n      ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/aspectTypes?aspect_type_id=dataproductoverview",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "dataproductoverview"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aspect Types_Data Governance_Luke",
+					"id": "d0753d19-ac38-40e1-a502-f58e4e76a5d5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Data Governance\",\n  \"metadataTemplate\": {\n      \"name\": \"UserSchema\",\n      \"type\": \"record\",\n      \"recordFields\": [\n          {\n              \"index\": 1,\n              \"name\": \"domain\",\n              \"type\": \"string\",\n              \"constraints\": {},\n              \"annotations\": {\n                  \"displayName\": \"Domain\",\n                  \"displayOrder\": 1\n              }\n          },\n          {\n              \"index\": 2,\n              \"name\": \"subdomain\",\n              \"type\": \"string\",\n              \"constraints\": {},\n              \"annotations\": {\n                  \"displayName\": \"Sub Domain\",\n                  \"displayOrder\": 2\n              }\n          },\n          {\n              \"index\": 3,\n              \"name\": \"datasteward\",\n              \"type\": \"string\",\n              \"constraints\": {},\n              \"annotations\": {\n                  \"displayName\": \"Data Steward\",\n                  \"displayOrder\": 3\n              }\n          }\n      ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/aspectTypes?aspect_type_id=datagovernance",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "datagovernance"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aspect Types_Inbound Ports_Luke",
+					"id": "ce6c8efb-13b1-45b1-a75a-780f5d923e40",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Inbound Ports\",\n  \"metadataTemplate\": {\n      \"name\": \"UserSchema\",\n      \"type\": \"record\",\n      \"recordFields\": [\n          {\n              \"index\": 1,\n              \"name\": \"inboud-port-details\",\n              \"type\": \"array\",\n              \"arrayItems\": {\n                  \"index\": 1,\n                  \"name\": \"inbound-port-record\",\n                  \"type\": \"record\",\n                  \"recordFields\": [\n                      {\n                          \"index\": 1,\n                          \"name\": \"port-name\",\n                          \"type\": \"string\",\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Port Name\",\n                              \"displayOrder\": 1                         \n                               }\n                      },\n                      {\n                          \"index\": 2,\n                          \"name\": \"port-type\",\n                          \"type\": \"enum\",\n                          \"enumValues\": [\n                              {\n                                  \"index\": 1,\n                                  \"name\": \"BigQuery\"\n                              },\n                              {\n                                  \"index\": 2,\n                                  \"name\": \"GCS\"\n                              },\n                              {\n                                  \"index\": 3,\n                                  \"name\": \"API\"\n                              },\n                              {\n                                  \"index\": 4,\n                                  \"name\": \"Kafka\"\n                              }\n                          ],\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Port Type\",\n                              \"displayOrder\": 2\n                          }\n                      },\n                      {\n                          \"index\": 3,\n                          \"name\": \"port-uRI\",\n                          \"type\": \"string\",\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Port URI\",\n                              \"displayOrder\": 3,\n                              \"stringType\": \"resource\"\n                          }\n                      }\n                  ],\n                  \"constraints\": {\n                      \"required\": true\n                  },\n                  \"annotations\": {\n                      \"displayName\": \"Inbound Port Record\",\n                      \"displayOrder\": 1\n                  }\n              },\n              \"constraints\": {\n                  \"required\": true\n              },\n              \"annotations\": {\n                  \"displayName\": \"Inboud Port Details\",\n                  \"displayOrder\": 1\n              }\n          }\n      ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/aspectTypes?aspect_type_id=inboundports",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "inboundports"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aspect Types_Code_Luke",
+					"id": "8e5b3b37-0fb1-4624-bfc4-f802783c8374",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Code\",\n  \"metadataTemplate\": {\n      \"name\": \"UserSchema\",\n      \"type\": \"record\",\n      \"recordFields\": [\n          {\n              \"index\": 1,\n              \"name\": \"code-details\",\n              \"type\": \"record\",\n              \"recordFields\": [\n                  {\n                      \"index\": 1,\n                      \"name\": \"module-name\",\n                      \"type\": \"string\",\n                      \"constraints\": {},\n                      \"annotations\": {\n                          \"displayName\": \"Module Name\",\n                          \"description\": \"This is the internal ID for the module which performs the function\",\n                          \"displayOrder\": 1\n                      }\n                  },\n                  {\n                      \"index\": 2,\n                      \"name\": \"module-description\",\n                      \"type\": \"string\",\n                      \"constraints\": {},\n                      \"annotations\": {\n                          \"displayName\": \"Module Description\",\n                          \"displayOrder\": 2,\n                          \"stringType\": \"richText\"\n                      }\n                  },\n                  {\n                      \"index\": 3,\n                      \"name\": \"module-url\",\n                      \"type\": \"string\",\n                      \"constraints\": {},\n                      \"annotations\": {\n                          \"displayName\": \"Module URL\",\n                          \"displayOrder\": 3,\n                          \"stringType\": \"url\"\n                      }\n                  }\n              ],\n              \"constraints\": {\n                  \"required\": true\n              },\n              \"annotations\": {\n                  \"displayName\": \"Code Details\",\n                  \"displayOrder\": 1\n              }\n          }\n      ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/aspectTypes?aspect_type_id=code",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "code"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aspect Types_ Infrastructure_Luke",
+					"id": "325b39cf-f548-466f-bf35-29aea6723cfa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Infrastructure\",\n  \"metadataTemplate\": {\n      \"name\": \"UserSchema\",\n      \"type\": \"record\",\n      \"recordFields\": [\n          {\n              \"index\": 1,\n              \"name\": \"infrastructure\",\n              \"type\": \"array\",\n              \"arrayItems\": {\n                  \"index\": 1,\n                  \"name\": \"infrastructure-component\",\n                  \"type\": \"record\",\n                  \"recordFields\": [\n                      {\n                          \"index\": 1,\n                          \"name\": \"component-name\",\n                          \"type\": \"string\",\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Component Name\",\n                              \"description\": \"Component Name\",\n                              \"displayOrder\": 1\n                          }\n                      },\n                      {\n                          \"index\": 2,\n                          \"name\": \"infrastructure-type\",\n                          \"type\": \"enum\",\n                          \"enumValues\": [\n                              {\n                                  \"index\": 1,\n                                  \"name\": \"Pubsub\"\n                              },\n                              {\n                                  \"index\": 2,\n                                  \"name\": \"Compute\"\n                              },\n                              {\n                                  \"index\": 3,\n                                  \"name\": \"API\"\n                              },\n                              {\n                                  \"index\": 4,\n                                  \"name\": \"BigQuery\"\n                              },\n                              {\n                                  \"index\": 5,\n                                  \"name\": \"Looker\"                                  \n                              },\n                              {\n                                  \"index\": 6,\n                                  \"name\": \"Dataflow\"\n                              }\n                          ],\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Infrastructure Type\",\n                              \"description\": \"Infrastructure Type\",\n                              \"displayOrder\": 2\n                          }\n                      },\n                      {\n                          \"index\": 3,\n                          \"name\": \"infrastructure-source\",\n                          \"type\": \"string\",\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Infrastructure Source\",\n                              \"description\": \"Infrastructure Source\",\n                              \"displayOrder\": 3,\n                              \"stringType\": \"url\"\n                          }\n                      },\n                      {\n                          \"index\": 4,\n                          \"name\": \"infrastructure-description\",\n                          \"type\": \"string\",\n                          \"constraints\": {},\n                          \"annotations\": {\n                              \"displayName\": \"Infrastructure Description\",\n                              \"displayOrder\": 4,\n                              \"stringType\": \"richText\"\n                          }\n                      }\n                  ],\n                  \"constraints\": {\n                      \"required\": true\n                  },\n                  \"annotations\": {\n                      \"displayName\": \"Infrastructure Component\",\n                      \"displayOrder\": 1\n                  }\n              },\n              \"constraints\": {\n                  \"required\": true\n              },\n              \"annotations\": {\n                  \"displayName\": \"Infrastructure\",\n                  \"displayOrder\": 1\n              }\n          }\n      ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/aspectTypes?aspect_type_id=infrastructure",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "infrastructure"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Aspect Types_ Outbound Ports_Luke",
+					"id": "7ab25a12-0993-4ef2-b0cb-b340ab5382bd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Outbound Ports\",\n  \"metadataTemplate\": {\n      \"name\": \"UserSchema\",\n      \"type\": \"record\",\n      \"recordFields\": [\n          {\n              \"index\": 1,\n              \"name\": \"outbound-port-details\",\n              \"type\": \"array\",\n              \"arrayItems\": {\n                  \"index\": 1,\n                  \"name\": \"outbound-port-record\",\n                  \"type\": \"record\",\n                  \"recordFields\": [\n                      {\n                          \"index\": 1,\n                          \"name\": \"port-name\",\n                          \"type\": \"string\",\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Port Name\",\n                              \"description\": \"Outbound Port Name\",\n                              \"displayOrder\": 1\n                          }\n                      },\n                      {\n                          \"index\": 2,\n                          \"name\": \"port-type\",\n                          \"type\": \"enum\",\n                          \"enumValues\": [\n                              {\n                                  \"index\": 1,\n                                  \"name\": \"BigQuery\"\n                              },\n                              {\n                                  \"index\": 2,\n                                  \"name\": \"GCS\"\n                              },\n                              {\n                                  \"index\": 3,\n                                  \"name\": \"Topic\"\n                              },\n                              {\n                                  \"index\": 4,\n                                  \"name\": \"API\"\n                              },\n                              {\n                                  \"index\": 5,\n                                  \"name\": \"Model\"\n                              },\n                              {\n                                  \"index\": 6,\n                                  \"name\": \"View\"\n                              },\n                              {\n                                  \"index\": 7,\n                                  \"name\": \"Dashboards\"\n                              }                                                            \n                          ],\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Port Type\",\n                              \"displayOrder\": 2\n                          }\n                      },\n                      {\n                          \"index\": 3,\n                          \"name\": \"port-url\",\n                          \"type\": \"string\",\n                          \"constraints\": {\n                              \"required\": true\n                          },\n                          \"annotations\": {\n                              \"displayName\": \"Port URI\",\n                              \"description\": \"Uniform Resource Identifier\",\n                              \"displayOrder\": 3,\n                              \"stringType\": \"resource\"\n                          }\n                      }\n                  ],\n                  \"constraints\": {\n                      \"required\": true\n                  },\n                  \"annotations\": {\n                      \"displayName\": \"Outbound Port Record\",\n                      \"displayOrder\": 1\n                  }\n              },\n              \"constraints\": {\n                  \"required\": true\n              },\n              \"annotations\": {\n                  \"displayName\": \"Outbound Port Details\",\n                  \"displayOrder\": 1\n              }\n          }\n      ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/aspectTypes?aspect_type_id=outboundports",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "outboundports"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Entry Types_Data Product_Luke Copy",
+					"id": "035fda31-bcea-4872-ac87-56813d363175",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Data Product\",\n  \"requiredAspects\": [\n      {\n          \"type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/outboundports\"\n      },\n      {\n          \"type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/inboundports\"\n      },\n      {\n          \"type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/infrastructure\"\n      },\n      {\n          \"type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/dataproductoverview\"\n      },\n      {\n          \"type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/datagovernance\"\n      },\n      {\n          \"type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/code\"\n      }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/entryTypes?entry_type_id=data-product",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"entryTypes"
+							],
+							"query": [
+								{
+									"key": "entry_type_id",
+									"value": "data-product"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Entry Groups_Data Product_Luke",
+					"id": "083fea7b-c199-40ae-b414-0fad35c22648",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"displayName\": \"Data Product\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/entryGroups?entry_group_id=data-product",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"entryGroups"
+							],
+							"query": [
+								{
+									"key": "entry_group_id",
+									"value": "data-product"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sample Entry Group_Data Product Group_Luke",
+					"id": "30651aee-fe6a-4926-86e4-05b0f1be9c77",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fully_qualified_name\": \"projects/data-products-framework/topics/movie-events-topic\",\n    \"entry_source\": {\n        \"displayName\": \"PLA001\",\n        \"description\": \"Generator for test session events\",\n        \"system\": \"Dataplex\",\n        \"platform\": \"Data Product\"\n    },\n    \"entry_type\": \"projects/data-products-framework/locations/us-central1/entryTypes/data-product\",\n    \"aspects\": {\n        \"dataplex-types.global.contacts\": {\n            \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/contacts\",\n            \"data\": {\n                \"identities\": [\n                    {\n                        \"role\": \"Owner\",\n                        \"name\": \"Russell Nash\"\n                    }\n                ]\n            }\n        },\n        \"data-products-framework.us-central1.dataproductoverview\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/dataproductoverview\",\n            \"data\": {\n                \"data-product-definition\": {\n                    \"data-product-owner\": \"Russell Nash\",\n                    \"data-product-id\": \"PLA001\",\n                    \"data-product-description\": \"Generator for test session events\",\n                    \"data-product-type\": \"Streaming\",\n                    \"data-product-documentation\": \"TBD\",\n                    \"tags\": [\n                        \"None\"\n                    ],\n                    \"data-product-type-template\": \"TBD\"\n                }\n            }\n        },\n        \"data-products-framework.us-central1.datagovernance\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/datagovernance\",\n            \"data\": {\n                \"domain\": \"Platform\",\n                \"subdomain\": \"Events\",\n                \"datasteward\": \"Jenny Black\"\n            }\n        },\n        \"data-products-framework.us-central1.inboundports\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/inboundports\",\n            \"data\": {\n                \"inboud-port-details\": [\n                    {\n                        \"port-name\": \"None\",\n                        \"port-type\": \"Kafka\",\n                        \"port-uRI\": \"None\"\n                    }\n                ]\n            }\n        },\n        \"data-products-framework.us-central1.code\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/code\",\n            \"data\": {\n                \"code-details\": {\n                    \"module-name\": \"Text\",\n                    \"module-description\": \"Text (Rich Text)\",\n                    \"module-url\": \"Text (URL)\"\n                }\n            }\n        },\n        \"data-products-framework.us-central1.infrastructure\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/infrastructure\",\n            \"data\": {\n                \"infrastructure\": [\n                    {\n                        \"component-name\": \"generate-movie-events\",\n                        \"infrastructure-type\": \"Dataflow\",\n                        \"infrastructure-source\": \"Text (URL)\",\n                        \"infrastructure-description\": \"Dataflow job for generating test events to push to outbound Pub/Sub topic\"\n                    }\n                ]\n            }\n        },\n        \"data-products-framework.us-central1.outboundports\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/outboundports\",\n            \"data\": {\n                \"outbound-port-details\": [\n                    {\n                        \"port-name\": \"movie-events-topic\",\n                        \"port-type\": \"Topic\",\n                        \"port-url\": \"projects/data-products-framework/topics/movie-events-topic\"\n                    }\n                ]\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/entryGroups/data-product/entries/?entry_id=PLA001",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "PLA001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Luke test",
+					"id": "3a3c6e3b-cefe-4f78-b1be-0b9c3df2c9ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fully_qualified_name\": \"bigquery:data-products-framework.tmdb.movies\",\n    \"displayName\": \"Data Product Group\",\n    \"entry_type\": \"projects/data-products-framework/locations/us-central1/entryTypes/data-product\",\n    \"aspects\": {\n        \"data-products-framework.us-central1.datagovernance\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/datagovernance\",\n            \"data\": {\n                \"domain\": \"Finance\",\n                \"subdomain\": \"Insurance\",\n                \"datasteward\": \"lukekflee@google.com\"\n            }\n        },\n        \"data-products-framework.us-central1.code\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/code\",\n            \"data\": {\n                \"code-details\": {\n                    \"module-name\": \"DP001\",\n                    \"module-description\": \"DP001 Transform customer raw to customer master. Lookup customer credit risk score as part of the process\",\n                    \"module-url\": \"https://github.com/GoogleCloudPlatform/cortex-data-foundation\"\n                }\n            }\n        },\n        \"data-products-framework.us-central1.inboundports\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/inboundports\",\n            \"data\": {\n                \"inboud-port-details\": [\n                    {\n                        \"port-name\": \"port-01\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uRI\": \"//bigquery.googleapis.com/projects/data-products-framework/datasets/image_objects/tables/images_bucket\"\n                    },\n                    {\n                        \"port-name\": \"port-02\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-uRI\": \"//bigquery.googleapis.com/projects/data-products-framework/datasets/image_objects/tables/images_bucket\"\n                    }\n                ]\n            }\n        },\n        \"data-products-framework.us-central1.outboundports\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/outboundports\",\n            \"data\": {\n                \"outbound-port-details\": [\n                    {\n                        \"port-name\": \"OP-001\",\n                        \"port-type\": \"BigQuery\",\n                        \"port-url\": \"//bigquery.googleapis.com/projects/data-products-framework/datasets/image_objects/tables/images_bucket\"\n                    }\n                ]\n            }\n        },\n        \"data-products-framework.us-central1.infrastructure\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/infrastructure\",\n            \"data\": {\n                \"infrastructure\": [\n                    {\n                        \"component-name\": \"DP001-INF-01\",\n                        \"infrastructure-type\": \"Pubsub\",\n                        \"infrastructure-source\": \"https://github.com/GoogleCloudPlatform/cortex-dag-generator/blob/667d682031ae0dcd4dcc328a6219025c17b1fe37/cloudbuild.cdc.yaml\",\n                        \"infrastructure-description\": \"description\"\n                    }\n                ]\n            }\n        },\n        \"data-products-framework.us-central1.dataproductoverview\": {\n            \"aspect_type\": \"projects/data-products-framework/locations/us-central1/aspectTypes/dataproductoverview\",\n            \"data\": {\n                \"data-product-definition\":{\n                    \"data-product-owner\": \"lukekflee@google.com\",\n                    \"data-product-id\": \"FIN001\",\n                    \"data-product-description\": \"Description of Data Product\",\n                    \"data-product-type\": \"AIML\"\n                }\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/data-products-framework/locations/us-central1/entryGroups/data-product/entries/?entry_id=data-product-group",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"data-products-framework",
+								"locations",
+								"us-central1",
+								"entryGroups",
+								"data-product",
+								"entries",
+								""
+							],
+							"query": [
+								{
+									"key": "entry_id",
+									"value": "data-product-group"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AspectTypes - System",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2e3e49f-f66a-4d31-81a2-f1156564a5bf",
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>Name</th>",
+									"        <th>UID</th>",
+									"        <th>Create Time</th>",
+									"        <th>Update Time</th>",
+									"        <th>Display Name</th>",
+									"        <th>Etag</th>",
+									"        <th>Metadata Template Name</th>",
+									"        <th>Metadata Template Type</th>",
+									"    </tr>",
+									"    ",
+									"    {{#each response.aspectTypes}}",
+									"        <tr>",
+									"            <td>{{name}}</td>",
+									"            <td>{{uid}}</td>",
+									"            <td>{{createTime}}</td>",
+									"            <td>{{updateTime}}</td>",
+									"            <td>{{displayName}}</td>",
+									"            <td>{{etag}}</td>",
+									"            <td>{{metadataTemplate.name}}</td>",
+									"            <td>{{metadataTemplate.type}}</td>",
+									"        </tr>",
+									"    {{/each}}",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return {response: pm.response.json()}",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "f9280b6d-53b8-400f-b1e7-35dad5a09ecc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/dataplex-types/locations/global/aspectTypes/bigquery-table"
+					},
+					"response": []
+				},
+				{
+					"name": "AspectTypes - Custom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2e3e49f-f66a-4d31-81a2-f1156564a5bf",
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>Name</th>",
+									"        <th>UID</th>",
+									"        <th>Create Time</th>",
+									"        <th>Update Time</th>",
+									"        <th>Display Name</th>",
+									"        <th>Etag</th>",
+									"        <th>Metadata Template Name</th>",
+									"        <th>Metadata Template Type</th>",
+									"    </tr>",
+									"    ",
+									"    {{#each response.aspectTypes}}",
+									"        <tr>",
+									"            <td>{{name}}</td>",
+									"            <td>{{uid}}</td>",
+									"            <td>{{createTime}}</td>",
+									"            <td>{{updateTime}}</td>",
+									"            <td>{{displayName}}</td>",
+									"            <td>{{etag}}</td>",
+									"            <td>{{metadataTemplate.name}}</td>",
+									"            <td>{{metadataTemplate.type}}</td>",
+									"        </tr>",
+									"    {{/each}}",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return {response: pm.response.json()}",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "fbfc662d-bbec-4d69-8f1a-a8ff797401ff",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/sydney-forum/locations/australia-southeast1/aspectTypes/data-contract"
+					},
+					"response": []
+				},
+				{
+					"name": "AspectTypes",
+					"id": "5a9229be-279d-458c-baf7-c32b14ca1b9b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n    \"description\": \"Book overview details\",\n    \"displayName\": \"Overview\",\n    \"aspectTemplate\": {},\n    \"authorization\": {},\n    \"metadataTemplate\": {\n        \"name\": \"UserSchema\",\n        \"type\": \"record\",\n        \"recordFields\": [\n            {\n                \"index\": 1,\n                \"name\": \"author\",\n                \"type\": \"string\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Author\",\n                    \"description\": \"Author of the book.\",\n                    \"displayOrder\": 1\n                }\n            },\n            {\n                \"index\": 2,\n                \"name\": \"classification\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Fiction\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Nonfiction\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Classification\",\n                    \"description\": \"Book Classification fiction or non-fiction\",\n                    \"displayOrder\": 2\n                }\n            },\n            {\n                \"index\": 3,\n                \"name\": \"genre\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Fantasy\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Mystery\"\n                    },\n                    {\n                        \"index\": 3,\n                        \"name\": \"Romance\"\n                    },\n                    {\n                        \"index\": 4,\n                        \"name\": \"Thriller\"\n                    },\n                    {\n                        \"index\": 5,\n                        \"name\": \"Biography\"\n                    },\n                    {\n                        \"index\": 6,\n                        \"name\": \"Self-Help\"\n                    },\n                    {\n                        \"index\": 7,\n                        \"name\": \"True-Crime\"\n                    },\n                    {\n                        \"index\": 8,\n                        \"name\": \"Cooking\"\n                    },\n                    {\n                        \"index\": 9,\n                        \"name\": \"Travel\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Genre\",\n                    \"description\": \"Genre of the book\",\n                    \"displayOrder\": 3\n                }\n            },\n            {\n                \"index\": 4,\n                \"name\": \"publication-year\",\n                \"type\": \"int\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Publication Year\",\n                    \"description\": \"Year of original publication\",\n                    \"displayOrder\": 4\n                }\n            },\n            {\n                \"index\": 5,\n                \"name\": \"isbn\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"ISBN\",\n                    \"description\": \"ISBN\",\n                    \"displayOrder\": 5\n                }\n            },\n            {\n                \"index\": 6,\n                \"name\": \"cover-image\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Cover Image\",\n                    \"description\": \"Cover Image of Book\",\n                    \"displayOrder\": 6,\n                    \"stringType\": \"url\"\n                }\n            },\n            {\n                \"index\": 7,\n                \"name\": \"summary\",\n                \"type\": \"string\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Summary\",\n                    \"description\": \"Short description of the book\",\n                    \"displayOrder\": 7,\n                    \"stringType\": \"richText\"\n                }\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes?aspect_type_id=book-overview",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"global",
+								"aspectTypes"
+							],
+							"query": [
+								{
+									"key": "aspect_type_id",
+									"value": "book-overview"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AspectTypes",
+					"id": "4440ea4b-2078-4bb6-89c9-3ae6142c7bab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/book-overview"
+					},
+					"response": []
+				}
+			],
+			"id": "b002047d-6402-417a-95a7-8412360d9806"
+		},
+		{
+			"name": "Export",
+			"item": [
+				{
+					"name": "exportMetadata",
+					"id": "b2003c2c-19c8-4b3d-b5cf-892ffc1bd4bd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"type\": \"EXPORT\",\n\"export_spec\": {\n                 \"output_path\": \"gs://dataplex-meta-export\",\n                 \"scope\": {\n                            \"projects\": [\"projects/818742068932\"]\n                            }\n}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/us-central1/metadataJobs?metadata_job_id=test-export",
+							"protocol": "https",
+							"host": [
+								"dataplex",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"projects",
+								"dataplex-metadata",
+								"locations",
+								"us-central1",
+								"metadataJobs"
+							],
+							"query": [
+								{
+									"key": "metadata_job_id",
+									"value": "test-export"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "f28ffe6f-5bde-49fe-9298-25df84d04f7b"
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": {
+			"scope": "https://www.googleapis.com/auth/cloud-platform",
+			"useBrowser": false,
+			"clientSecret": "{{clientSecret}}",
+			"clientId": "{{clientID}}",
+			"tokenName": "GoogleToken",
+			"accessTokenUrl": "https://oauth2.googleapis.com/token",
+			"authUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+			"redirect_uri": "https://oauth.pstmn.io/v1/callback",
+			"addTokenTo": "header"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1c2c9f08-6e65-4e28-86f6-4622aa1898a5",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2b68c7c1-978c-4a81-8574-a7f01bfb91aa",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "client_id",
+			"value": "305260463307"
+		},
+		{
+			"key": "client_secret",
+			"value": "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"
+		}
+	]
+}
