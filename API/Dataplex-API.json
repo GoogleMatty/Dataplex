@@ -691,6 +691,48 @@
 					"name": "Data Product v2",
 					"item": [
 						{
+							"name": "Entry - DP0001",
+							"id": "c1451396-a4cf-4e2e-8bff-49e42d5a2d27",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"entry_source\": \n    {\n          \"display_name\": \"Pride and Prejudice\",\n          \"description\": \"Follows the turbulent relationship between Elizabeth Bennet, the daughter of a country gentleman, and Fitzwilliam Darcy, a rich aristocratic landowner\",\n          \"system\": \"Library\",\n          \"platform\": \"Dataplex Catalog\"\n    },\n  \"entry_type\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n  \"aspects\": {\n    \"dataplex-types.global.overview\": {\n        \"data\": { \"content\": \"In Jane Austen's Pride and Prejudice, the lives of the Bennet sisters, particularly Elizabeth, revolve around the pursuit of advantageous marriages in 19th-century England.  When the wealthy and arrogant Mr. Darcy arrives in their neighborhood, Elizabeth clashes with him, forming a negative first impression fueled by pride and prejudice.  However, through a series of social encounters and misunderstandings, Elizabeth and Darcy are forced to confront their own biases and misconceptions.  As their initial disdain gradually transforms into respect and affection, they must overcome societal expectations, family pressures, and their own flaws to find love and happiness.\" }\n     },\n       \"dataplex-metadata.global.book-overview\": {\n      \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\",\n       \"data\": {\n                \"author\":           \"Jane Austen\",\n                \"classification\":   \"Fiction\",\n                \"genre\":            \"Romance\",\n                \"publication-year\": \"1875\",\n                \"isbn\":             \"9780140434262\",\n                \"cover-image\":      \"\",\n                \"summary\":          \"\"\n                }\n            },\n     \"dataplex-metadata.global.book-revisions\": {\n       \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\",\n       \"data\": {\n                 \"revision-history\": [  { \"revision-number\":      \"1\" ,\n                                          \"revision-date\":        \"1835-10-02T15:01:23.045123456Z\",\n                                          \"description\":      \"First Edition\" },\n                                          { \"revision-number\":      \"1\" ,\n                                          \"revision-date\":        \"1840-10-02T15:01:23.045123456Z\",\n                                          \"description\":      \"Second Edition minor corrections.\" }\n                                         \n                 ]\n                }\n     },\n     \"dataplex-metadata.global.book-tags\": {\n       \"aspect_type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\",\n       \"data\": {\n                 \"tags\": [ \"Austen\",\"Classic\",\"Romance\"  ]\n                  }    \n         }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryGroups/library/entries/?entry_id=PridePrejudice",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryGroups",
+										"library",
+										"entries",
+										""
+									],
+									"query": [
+										{
+											"key": "entry_id",
+											"value": "PridePrejudice"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "AT - DataContract",
 							"id": "1f0b9e2c-862a-4c97-857e-dbd5456505f6",
 							"protocolProfileBehavior": {
