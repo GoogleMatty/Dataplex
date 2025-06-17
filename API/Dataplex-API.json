@@ -686,6 +686,24 @@
 						}
 					],
 					"id": "b84346e6-a773-4749-b25a-8e124941ee05"
+				},
+				{
+					"name": "Data Product v2",
+					"item": [
+						{
+							"name": "AT - DataContract",
+							"id": "1f0b9e2c-862a-4c97-857e-dbd5456505f6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "fd1f4e51-491f-4e69-8f07-4a77a2116224"
 				}
 			],
 			"id": "6011e91a-b722-4822-b58f-1e2aa4aa722b"
