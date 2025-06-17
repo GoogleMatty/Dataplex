@@ -701,6 +701,19 @@
 								"header": []
 							},
 							"response": []
+						},
+						{
+							"name": "AT - DataContract",
+							"id": "54e343e7-34e8-46a3-886c-40902d346db0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/DataContract"
+							},
+							"response": []
 						}
 					],
 					"id": "fd1f4e51-491f-4e69-8f07-4a77a2116224"
