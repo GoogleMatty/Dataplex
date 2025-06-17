@@ -802,7 +802,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n    \"description\": \"My library of books\",\n    \"displayName\": \"Books\",\n    \"etag\": \"xnnSc9nfiMSYp2JO-0oj53o9-KB8z36Xrmmk2OmUNAM\",\n    \"platform\": \"Dataplex\",\n    \"system\": \"Library\",\n    \"requiredAspects\": [\n      {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\"\n        },\n         {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\"\n        },\n        {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\"\n        }\n    ],\n    \"authorization\": {}\n}",
+									"raw": "{\n  \"displayName\": \"Data Product\",\n  \"description\": \"A collection of aspects that define a Data Product, including its contract, implementation, governance, and operational details.\",\n  \"requiredAspects\": [\n    {\n      \"type\": \"projects/cymbal-trucks/locations/global/aspectTypes/data-products-contract\"\n    },\n    {\n      \"type\": \"projects/cymbal-trucks/locations/global/aspectTypes/data-products-implementation\"\n    }\n  ]\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -810,7 +810,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryTypes?entry_type_id=books",
+									"raw": "https://dataplex.googleapis.com/v1/projects/cymbal-trucks/locations/global/entryTypes?entry_type_id=Data Product",
 									"protocol": "https",
 									"host": [
 										"dataplex",
@@ -820,7 +820,7 @@
 									"path": [
 										"v1",
 										"projects",
-										"dataplex-metadata",
+										"cymbal-trucks",
 										"locations",
 										"global",
 										"entryTypes"
@@ -828,7 +828,7 @@
 									"query": [
 										{
 											"key": "entry_type_id",
-											"value": "books"
+											"value": "Data Product"
 										}
 									]
 								}
