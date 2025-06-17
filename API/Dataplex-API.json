@@ -697,8 +697,40 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/aspectTypes/data-contract\",\n    \"description\": \"Defines the data contract for a data asset.\",\n    \"displayName\": \"Data Contract\",\n    \"aspectTemplate\": {},\n    \"authorization\": {},\n    \"metadataTemplate\": {\n        \"name\": \"DataContractSchema\",\n        \"type\": \"record\",\n        \"recordFields\": [\n            {\n                \"index\": 1,\n                \"name\": \"data-purpose\",/*  */\n                \"type\": \"string\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Data Purpose\",\n                    \"description\": \"The business purpose or use case for this data.\",\n                    \"displayOrder\": 1,\n                    \"stringType\": \"richText\"\n                }\n            },\n            {\n                \"index\": 2,\n                \"name\": \"description\",\n                \"type\": \"string\",\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Description\",\n                    \"description\": \"A detailed description of the data asset.\",\n                    \"displayOrder\": 2,\n                    \"stringType\": \"richText\"\n                }\n            },\n            {\n                \"index\": 3,\n                \"name\": \"velocity\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Batch - Micro\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Batch - Daily\"\n                    },\n                    {\n                        \"index\": 3,\n                        \"name\": \"Batch - Weekly\"\n                    },\n                    {\n                        \"index\": 4,\n                        \"name\": \"Batch - Monthly\"\n                    },\n                    {\n                        \"index\": 5,\n                        \"name\": \"Batch - Yearly\"\n                    },\n                    {\n                        \"index\": 6,\n                        \"name\": \"Streaming\"\n                    },\n                    {\n                        \"index\": 7,\n                        \"name\": \"Adhoc - On Demand\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Velocity\",\n                    \"description\": \"The frequency or speed at which data is ingested or updated.\",\n                    \"displayOrder\": 3\n                }\n            },\n            {\n                \"index\": 4,\n                \"name\": \"variety\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Structured\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Semi-Structured\"\n                    },\n                    {\n                        \"index\": 3,\n                        \"name\": \"Unstructured\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Variety\",\n                    \"description\": \"The format and organization of the data.\",\n                    \"displayOrder\": 4\n                }\n            },\n            {\n                \"index\": 5,\n                \"name\": \"volume\",\n                \"type\": \"record\",\n                \"recordFields\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"initial-size\",\n                        \"type\": \"string\",\n                        \"constraints\": {},\n                        \"annotations\": {\n                            \"displayName\": \"Initial Size\",\n                            \"description\": \"The initial size of the data asset (e.g., '100 GB', '5 TB').\",\n                            \"displayOrder\": 1\n                        }\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"annual-growth\",\n                        \"type\": \"string\",\n                        \"constraints\": {},\n                        \"annotations\": {\n                            \"displayName\": \"Annual Growth\",\n                            \"description\": \"Expected annual growth of the data asset (e.g., '20%', '500 GB/year').\",\n                            \"displayOrder\": 2\n                        }\n                    }\n                ],\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Volume\",\n                    \"description\": \"Information related to the size and growth of the data.\",\n                    \"displayOrder\": 5\n                }\n            },\n            {\n                \"index\": 6,\n                \"name\": \"steward-contact\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Steward/Contact\",\n                    \"description\": \"The primary contact or steward for this data asset.\",\n                    \"displayOrder\": 6\n                }\n            },\n            {\n                \"index\": 7,\n                \"name\": \"data-level\",\n                \"type\": \"enum\",\n                \"enumValues\": [\n                    {\n                        \"index\": 1,\n                        \"name\": \"Bronze\"\n                    },\n                    {\n                        \"index\": 2,\n                        \"name\": \"Silver\"\n                    },\n                    {\n                        \"index\": 3,\n                        \"name\": \"Gold\"\n                    },\n                    {\n                        \"index\": 4,\n                        \"name\": \"Unclassified\"\n                    }\n                ],\n                \"constraints\": {\n                    \"required\": true\n                },\n                \"annotations\": {\n                    \"displayName\": \"Data Level\",\n                    \"description\": \"The quality and refinement level of the data.\",\n                    \"displayOrder\": 7\n                }\n            },\n            {\n                \"index\": 8,\n                \"name\": \"freshness\",\n                \"type\": \"datetime\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Freshness\",\n                    \"description\": \"The timestamp indicating the freshness of the data.\",\n                    \"displayOrder\": 8\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes?aspect_type_id=data-contract",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"aspectTypes"
+									],
+									"query": [
+										{
+											"key": "aspect_type_id",
+											"value": "data-contract"
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -709,8 +741,40 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/aspectTypes/data-product-implementation\",\n    \"description\": \"Details pertaining to the technical implementation of a data product.\",\n    \"displayName\": \"Data Products Implementation\",\n    \"aspectTemplate\": {},\n    \"authorization\": {},\n    \"metadataTemplate\": {\n        \"name\": \"DataProductsImplementationSchema\",\n        \"type\": \"record\",\n        \"recordFields\": [\n            {\n                \"index\": 1,\n                \"name\": \"source-description\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Source Description\",\n                    \"description\": \"A description of the upstream data sources or systems.\",\n                    \"displayOrder\": 1,\n                    \"stringType\": \"richText\"\n                }\n            },\n            {\n                \"index\": 2,\n                \"name\": \"inbound-ports\",\n                \"type\": \"array\",\n                \"arrayItemType\": {\n                    \"name\": \"PortDetailsInbound\",\n                    \"type\": \"record\",\n                    \"recordFields\": [\n                        {\n                            \"index\": 1,\n                            \"name\": \"port-type\",\n                            \"type\": \"enum\",\n                            \"enumValues\": [\n                                {\n                                    \"index\": 1,\n                                    \"name\": \"BigQuery\"\n                                },\n                                {\n                                    \"index\": 2,\n                                    \"name\": \"Pubsub\"\n                                },\n                                {\n                                    \"index\": 3,\n                                    \"name\": \"API\"\n                                }\n                            ],\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Port Type\",\n                                \"description\": \"The type of the inbound data port.\"\n                            }\n                        },\n                        {\n                            \"index\": 2,\n                            \"name\": \"port-name\",\n                            \"type\": \"string\",\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Port Name\",\n                                \"description\": \"The name or identifier of the inbound data port.\"\n                            }\n                        }\n                    ]\n                },\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Inbound Ports\",\n                    \"description\": \"Details of data ports from which this product consumes data.\",\n                    \"displayOrder\": 2\n                }\n            },\n            {\n                \"index\": 3,\n                \"name\": \"outbound-ports\",\n                \"type\": \"array\",\n                \"arrayItemType\": {\n                    \"name\": \"PortDetailsOutbound\",\n                    \"type\": \"record\",\n                    \"recordFields\": [\n                        {\n                            \"index\": 1,\n                            \"name\": \"port-type\",\n                            \"type\": \"enum\",\n                            \"enumValues\": [\n                                {\n                                    \"index\": 1,\n                                    \"name\": \"BigQuery\"\n                                },\n                                {\n                                    \"index\": 2,\n                                    \"name\": \"Pubsub\"\n                                },\n                                {\n                                    \"index\": 3,\n                                    \"name\": \"API\"\n                                }\n                            ],\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Port Type\",\n                                \"description\": \"The type of the outbound data port.\"\n                            }\n                        },\n                        {\n                            \"index\": 2,\n                            \"name\": \"port-target\",\n                            \"type\": \"string\",\n                            \"constraints\": {\n                                \"required\": true\n                            },\n                            \"annotations\": {\n                                \"displayName\": \"Port Target\",\n                                \"description\": \"The target URI or identifier of the outbound data port.\",\n                                \"stringType\": \"url\"\n                            }\n                        }\n                    ]\n                },\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Outbound Ports\",\n                    \"description\": \"Details of data ports to which this product publishes data.\",\n                    \"displayOrder\": 3\n                }\n            },\n            {\n                \"index\": 4,\n                \"name\": \"infrastructure-url\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Infrastructure URL\",\n                    \"description\": \"URL pointing to infrastructure definitions (e.g., Terraform, CloudFormation).\",\n                    \"displayOrder\": 4,\n                    \"stringType\": \"url\"\n                }\n            },\n            {\n                \"index\": 5,\n                \"name\": \"code-url\",\n                \"type\": \"string\",\n                \"constraints\": {},\n                \"annotations\": {\n                    \"displayName\": \"Code URL\",\n                    \"description\": \"URL pointing to the source code repository for this data product.\",\n                    \"displayOrder\": 5,\n                    \"stringType\": \"url\"\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes?aspect_type_id=data-product-implementation",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"aspectTypes"
+									],
+									"query": [
+										{
+											"key": "aspect_type_id",
+											"value": "data-product-implementation"
+										}
+									]
+								}
 							},
 							"response": []
 						},
