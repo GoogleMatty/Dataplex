@@ -790,6 +790,50 @@
 								"url": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/aspectTypes/DataContract"
 							},
 							"response": []
+						},
+						{
+							"name": "ET - Data Product",
+							"id": "a422da2d-1a29-4370-b24e-57d8b2887a63",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"projects/dataplex-metadata/locations/global/entryTypes/books\",\n    \"description\": \"My library of books\",\n    \"displayName\": \"Books\",\n    \"etag\": \"xnnSc9nfiMSYp2JO-0oj53o9-KB8z36Xrmmk2OmUNAM\",\n    \"platform\": \"Dataplex\",\n    \"system\": \"Library\",\n    \"requiredAspects\": [\n      {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-overview\"\n        },\n         {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-revisions\"\n        },\n        {\n            \"type\": \"projects/dataplex-metadata/locations/global/aspectTypes/book-tags\"\n        }\n    ],\n    \"authorization\": {}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dataplex.googleapis.com/v1/projects/dataplex-metadata/locations/global/entryTypes?entry_type_id=books",
+									"protocol": "https",
+									"host": [
+										"dataplex",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"projects",
+										"dataplex-metadata",
+										"locations",
+										"global",
+										"entryTypes"
+									],
+									"query": [
+										{
+											"key": "entry_type_id",
+											"value": "books"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "fd1f4e51-491f-4e69-8f07-4a77a2116224"
