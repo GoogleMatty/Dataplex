@@ -703,6 +703,18 @@
 							"response": []
 						},
 						{
+							"name": "AT - DataProductImplementation",
+							"id": "25d7490d-ff1f-44ea-88de-f52410c937b2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "AT - DataContract",
 							"id": "54e343e7-34e8-46a3-886c-40902d346db0",
 							"protocolProfileBehavior": {
